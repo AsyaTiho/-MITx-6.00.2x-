@@ -64,6 +64,11 @@ def song_playlist(songs, max_size):
     
 print(song_playlist(songs, max_size))
 
+"""
+**Graph Problem**.
+Two initial functions (createRandomGraph() and findPath(g, start, end, path=[]))  were given. The third function needed to find all possible nodes m that are reachable from node n
+
+"""
 
 import random
   
@@ -102,10 +107,6 @@ def findPath(g, start, end, path=[]):
             if newpath: return newpath
     return None
                 
-#########################        
-## WRITE THIS FUNCTION ##
-#########################        
-#output = [5, 6, 7, 8, 9]
 
 def allReachable(g, n):
     results = []
@@ -114,6 +115,11 @@ def allReachable(g, n):
             results.append(m)
     results.remove(n)
     return results
+
+"""
+I ran out of time when working on this problem, so I could not test it on MIT IDE but I copied all the testing cases, so I could ran the solution later.
+
+"""
 
 cases = [
     dict(
@@ -147,8 +153,10 @@ for case in cases:
     print("out", out)
     print("Correct", case["correct"])
     
+"""
+Solveit Problem. 
 
-    
+"""
     
 
 def solveit(test):
