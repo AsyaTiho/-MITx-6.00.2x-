@@ -82,10 +82,11 @@ class RectangularRoom(object):
         width: an integer > 0
         height: an integer > 0
         """
-        self.width = int(width)>0
-        self.height = int(height)>0
-    
-        raise NotImplementedError
+        self.height = int(height)
+        self.width = int(width)
+        self.clean_tiles = []
+        
+
     
     def cleanTileAtPosition(self, pos):
         """
@@ -95,8 +96,10 @@ class RectangularRoom(object):
 
         pos: a Position
         """
+        clean_tile = (int(pos.getX()),int(pos.getY()))
+        if clean_tile not in self.clean_tiles:
+            self.clean_tiles.append(clean_tile)
         
-        raise NotImplementedError
 
     def isTileCleaned(self, m, n):
         """
@@ -108,7 +111,12 @@ class RectangularRoom(object):
         n: an integer
         returns: True if (m, n) is cleaned, False otherwise
         """
-        raise NotImplementedError
+        self.m = m
+        self.n = n
+        if (self.m, self.n) in self.clean_tiles:
+            return True
+        else:
+            return False
     
     def getNumTiles(self):
         """
@@ -117,7 +125,7 @@ class RectangularRoom(object):
         returns: an integer
         """
         self
-        raise NotImplementedError
+        return self.width * self.height
 
     def getNumCleanedTiles(self):
         """
@@ -125,7 +133,8 @@ class RectangularRoom(object):
 
         returns: an integer
         """
-        raise NotImplementedError
+        return len(self.clean_tiles)
+        
 
     def getRandomPosition(self):
         """
@@ -133,7 +142,9 @@ class RectangularRoom(object):
 
         returns: a Position object.
         """
-        raise NotImplementedError
+        rand_x = random.uniform(0,self.width)
+        rand_y = random.uniform(0,self.height)
+        return Position(rand_x,rand_y)
 
     def isPositionInRoom(self, pos):
         """
@@ -142,7 +153,10 @@ class RectangularRoom(object):
         pos: a Position object.
         returns: True if pos is in the room, False otherwise.
         """
-        raise NotImplementedError
+        if pos.x >= 0 and pos.x < self.width and pos.y >=0 and pos.y< self.height: 
+            return True
+        else:
+            return False
 
 
 # === Problem 2
